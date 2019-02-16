@@ -4,9 +4,13 @@ services:
     container_name: dontmd-nginx
     ports: 
       - 80:80
-    build: ./nginx
+    build: nginx/.
     volumes:
-      - ./nginx:nginx
+      - ./nginx/:/nginx/
+    depends_on: 
+      - front-end
+      - back-end
+      - db
 
   front-end:
     container_name: dontmd-frontend

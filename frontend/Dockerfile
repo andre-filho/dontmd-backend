@@ -1,13 +1,13 @@
 FROM node:10.14
 
+EXPOSE 8080
+
 WORKDIR /frontend
 
 COPY . /frontend
 
-RUN yarn add @vue/cli @vue/cli-init --global
+RUN yarn add @vue/cli @vue/cli-init --global && yarn add jquery
 
-# RUN yarn install
+RUN yarn install
 
-EXPOSE 8080
-
-# CMD yarn run dev
+CMD yarn run dev
