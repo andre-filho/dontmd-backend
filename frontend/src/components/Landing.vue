@@ -69,21 +69,20 @@ export default {
         if (this.attemptsOnBlankPage < 6) {
           this.attemptsOnBlankPage++
           alert('Please give your page a name')
-        }
-        else {
+        } else {
           this.attemptsOnBlankPage = 0
           alert('Goddamn dude! Can\'t you read?! Name that fucking page!!!')
         }
       }
 
-      axios
-        .post(process.env.HOST_ADDRESS + 'pages/')
-        .then((res) => {
+      // axios
+      //   .post(process.env.HOST_ADDRESS + 'pages/')
+      //   .then((res) => {
+      //     return res
+      //   })
+        // .catch((err) => {
 
-        })
-        .catch((err) => {
-
-        })
+        // })
       // final statement should be a redirect to the created page
     }
   }
