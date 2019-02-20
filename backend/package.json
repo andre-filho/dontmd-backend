@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "main": "main.js",
   "license": "GPL-v3",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.14"
+  }
 }
