@@ -15,8 +15,7 @@ router.get('/', (req, res) => {
 // create
 router.post('/', (req, res) => {
   const page = new Page({
-    name: req.body.name,
-    content: ''
+    name: req.body.name
   })
 
   page.save()

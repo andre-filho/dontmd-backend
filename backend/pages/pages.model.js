@@ -6,10 +6,7 @@ const pageSchema = new mongoose.Schema({
     required: true,
     unique:  true
   },
-  content: {
-    type: 'String',
-    required:true
-  }
+  content: 'String'
 })
 
 const Page = mongoose.model('Page', pageSchema)
