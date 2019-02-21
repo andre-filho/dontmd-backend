@@ -1,23 +1,23 @@
 version: '3'
 services:
-  # nginx:
-  #   container_name: dontmd-nginx
-  #   ports: 
-  #     - 80:80
-  #   build: nginx/.
-  #   volumes:
-  #     - ./nginx/:/nginx/
-  #   depends_on: 
-  #     - front-end
-  #     - back-end
-  #     - db
-  #   networks:
-  #     - net_1
+  nginx:
+    container_name: dontmd-nginx
+    ports: 
+      - 80:80
+    build: nginx/.
+    volumes:
+      - ./nginx/:/etc/nginx/
+    depends_on: 
+      - dontmd-front
+      - dontmd-api
+      - dontmd-db
+    networks:
+      - dontmd_net_1
 
-  front-end:
+  dontmd-front:
     container_name: dontmd-frontend
     depends_on: 
-      - db
+      - dontmd-db
     ports: 
       - 8080:8080
     build: ./frontend
@@ -25,12 +25,12 @@ services:
       - ./frontend:/frontend
       - ./frontend/node_modules:/frontend/node_modules
     networks: 
-      - net_1
+      - dontmd_net_1
 
-  api:
+  dontmd-api:
     container_name: dontmd-api
     depends_on: 
-      - db
+      - dontmd-db
     ports: 
       - 3000:3000
     build: ./backend
@@ -38,15 +38,15 @@ services:
       - ./backend:/backend
       - ./backend/node_modules:/backend/node_modules
     networks: 
-      - net_1
+      - dontmd_net_1
   
-  db:
+  dontmd-db:
     container_name: dontmd-db
     image: mongo
     ports:
       - 27017:27017
     networks: 
-      - net_1
+      - dontmd_net_1
 
 networks: 
-  net_1:
+  dontmd_net_1:

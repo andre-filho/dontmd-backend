@@ -7,8 +7,8 @@ const router = express.Router()
 
 const pagesRouter = require('./pages/pages.router')
 
-mongoose.connect(`mongodb://db:27017/dev`)
-mongoose.connect(`mongodb://db:27017/${process.env.DB_NAME}`)
+mongoose.connect(`mongodb://dontmd-db:27017/dev`)
+mongoose.connect(`mongodb://dontmd-db:27017/${process.env.DB_NAME}`)
 
 var dbConnection = mongoose.connection
 

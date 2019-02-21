@@ -1,5 +1,5 @@
-FROM nginx:latest
+FROM nginx:1.14
 
-WORKDIR /nginx
+EXPOSE 80
 
-COPY . /nginx
+COPY nginx.conf /etc/nginx/nginx.conf

@@ -78,12 +78,14 @@ export default {
       // axios
       //   .post(process.env.HOST_ADDRESS + 'pages/')
       //   .then((res) => {
-      //     return res
-      //   })
-        // .catch((err) => {
+      //     if (res.status === 200) {
+      //       // final statement should be a redirect to the created page
 
-        // })
-      // final statement should be a redirect to the created page
+      //     }
+      //   })
+      //   .catch((err) => {
+
+      //   })
     }
   }
 }
