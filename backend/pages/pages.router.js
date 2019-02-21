@@ -1,11 +1,9 @@
 const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
+// const app = express()
+// const mongoose = require('mongoose')
 
 const router = express.Router()
 const Page = require('./pages.model')
-
-mongoose.connect('mongodb://db:271017/base')
 
 // get all
 router.get('/', (req, res) => {
@@ -38,7 +36,15 @@ router.post('/', (req, res) => {
 
 // get one
 router.get('/:name', (req, res) => {
+  Page.findOne({name: req.params.name})
+    .then((page) => {
+      if (!page) {
+        return res.status(404)
+      }
 
+      res.status(200).json(page)
+    })
+    .catch(err => res.status(500).json({error: err}))
 })
 
 // edit
@@ -62,7 +68,10 @@ router.patch('/:name', (req, res) => {
 
 // delete
 router.delete('/:name', (req, res) => {
-
+  Page.findOneAndDelete({name: req.params.name})
+    .then((success) => {
+      res.status(200).json(success)
+    })
 })
 
-export default router
+module.exports = router

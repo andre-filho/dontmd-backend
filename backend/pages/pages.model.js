@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const schema = new mongoose.Schema({
+const pageSchema = new mongoose.Schema({
   name: {
     type: 'String',
     required: true,
@@ -12,6 +12,6 @@ const schema = new mongoose.Schema({
   }
 })
 
-const Page = mongoose.model('Page', schema)
+const Page = mongoose.model('Page', pageSchema)
 
-export default Page
+module.exports = Page

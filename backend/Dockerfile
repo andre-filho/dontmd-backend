@@ -8,4 +8,4 @@ COPY . /backend
 
 RUN yarn install
 
-CMD yarn run dev
+CMD yarn run server
