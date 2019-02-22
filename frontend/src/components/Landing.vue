@@ -95,4 +95,8 @@ export default {
   section {
     padding: 5em 0;
   }
+
+  .container {
+    padding-top: 3em;
+  }
 </style>

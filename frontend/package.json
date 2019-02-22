@@ -19,6 +19,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.5",
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.13",
+    "marked": "^0.6.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

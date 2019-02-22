@@ -1,7 +1,4 @@
 const express = require('express')
-// const app = express()
-// const mongoose = require('mongoose')
-
 const router = express.Router()
 const Page = require('./pages.model')
 
@@ -28,7 +25,6 @@ router.post('/', (req, res) => {
       } if (err.name === 'ValidationError') {
         return res.status(400).send({message: 'Invalid data'});
       }
-      // Some other error
       return res.status(400).send(err);
     })
 })
