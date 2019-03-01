@@ -2,13 +2,12 @@ version: '3'
 services:
   nginx:
     container_name: dontmd-nginx
-    ports: 
+    ports:
       - 80:80
     build: nginx/.
     volumes:
       - ./nginx/:/etc/nginx/
-    depends_on: 
-      - dontmd-front
+    depends_on:
       - dontmd-api
       - dontmd-db
     networks:
@@ -16,24 +15,24 @@ services:
 
   dontmd-api:
     container_name: dontmd-api
-    depends_on: 
+    depends_on:
       - dontmd-db
-    ports: 
+    ports:
       - 3000:3000
     build: .
-    volumes: 
+    volumes:
       - .:/backend
       - ./node_modules:/backend/node_modules
-    networks: 
+    networks:
       - dontmd_net_1
-  
+
   dontmd-db:
     container_name: dontmd-db
     image: mongo
     ports:
       - 27017:27017
-    networks: 
+    networks:
       - dontmd_net_1
 
-networks: 
+networks:
   dontmd_net_1:

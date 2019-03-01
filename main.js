@@ -1,9 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
+const router = express.Router()
 
 var app = express()
-const router = express.Router()
 
 const pagesRouter = require('./pages/pages.router')
 
@@ -15,8 +16,14 @@ var dbConnection = mongoose.connection
 dbConnection.on('error', console.error.bind(console, 'connection error:'))
 dbConnection.once('open', () => console.log('Database is connected'))
 
+// var corsOptions = {
+//   origin: 'http://0.0.0.0:8080/',
+//   optionsSuccessStatus: 200
+// }
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors())
 
 router.get('/', (req, res) => {
   res.status(200).json({
