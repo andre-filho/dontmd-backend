@@ -20,12 +20,13 @@ router.post('/', (req, res) => {
       res.status(201).json({pageName: page.name})
     })
     .catch((err) => {
+      // res.status(400).send(err)
       if (err.name === 'MongoError' && err.code === 11000) {
         return res.status(400).send({message: 'Already exists'});
       } if (err.name === 'ValidationError') {
         return res.status(400).send({message: 'Invalid data'});
       }
-      return res.status(400).send(err);
+      // return res.status(400).send('asdojasoijad');
     })
 })
 
@@ -33,36 +34,27 @@ router.post('/', (req, res) => {
 router.get('/:name', (req, res) => {
   Page.findOne({name: req.params.name})
     .then((page) => {
-      if (!page) {
-        return res.status(404)
-      }
-
       res.status(200).json(page)
     })
     .catch(err => res.status(500).json({error: err}))
 })
 
 // edit
-router.patch('/:name', (req, res) => {
-  Page.find({name: req.params.name})
-    .then((page) => {
-      const p = page
-      if (!p) {
-        return res.status(404)
-      }
-      
-      p.content = req.body.content
-      p.save((err) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        return res.status(200).send(p);
-      })
-    })
+router.patch('/edit/:name', (req, res) => {
+  console.log(`RECIEVED: ${req.params.name} ${req.body.content}`)
+
+  const update = {content: req.body.content}
+
+  Page.updateOne({name: req.params.name}, update).then(result => {
+    console.log('updated')
+    res.status(200).json({message: "Updated"})
+  }).catch((err) => {
+    console.log(`ERROR: ${err}`)
+  })
 })
 
 // delete
-router.delete('/:name', (req, res) => {
+router.delete('/delete/:name', (req, res) => {
   Page.findOneAndDelete({name: req.params.name})
     .then((success) => {
       res.status(200).json(success)
