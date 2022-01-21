@@ -20,13 +20,11 @@ router.post('/', (req, res) => {
       res.status(201).json({pageName: page.name})
     })
     .catch((err) => {
-      // res.status(400).send(err)
       if (err.name === 'MongoError' && err.code === 11000) {
         return res.status(400).send({message: 'Already exists'});
       } if (err.name === 'ValidationError') {
         return res.status(400).send({message: 'Invalid data'});
       }
-      // return res.status(400).send('asdojasoijad');
     })
 })
 

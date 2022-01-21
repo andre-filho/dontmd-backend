@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   nginx:
     container_name: dontmd-nginx
@@ -36,3 +36,4 @@ services:
 
 networks:
   dontmd_net_1:
+    name: dontmd_net_1
